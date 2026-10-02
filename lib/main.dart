@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -58,147 +59,193 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       body: Center(
-        child: Container(
-          width: 420,
-          padding: const EdgeInsets.all(35),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: const Color(0xFFE2E8F0),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Container(
+            width: 420,
+            padding: const EdgeInsets.all(35),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: const Color(0xFFE2E8F0),
+              ),
+              boxShadow: const [
+                BoxShadow(
+                  blurRadius: 20,
+                  spreadRadius: 2,
+                  color: Colors.black12,
+                ),
+              ],
             ),
-            boxShadow: const [
-              BoxShadow(
-                blurRadius: 20,
-                spreadRadius: 2,
-                color: Colors.black12,
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                "MATRIX CODE LAB",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF002B9A),
-                ),
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                "Student Portal",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-              const SizedBox(height: 30),
-              TextField(
-                controller: emailController,
-                decoration: InputDecoration(
-                  labelText: "Email / Username",
-                  prefixIcon: const Icon(Icons.person_outline),
-                  border: const OutlineInputBorder(),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFF002B9A),
-                      width: 2,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 18),
-              TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  prefixIcon: const Icon(Icons.lock_outline),
-                  border: const OutlineInputBorder(),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFF002B9A),
-                      width: 2,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Checkbox(
-                    value: rememberMe,
-                    onChanged: (value) {
-                      setState(() {
-                        rememberMe = value ?? false;
-                      });
-                    },
-                  ),
-                  const Text("Remember Me"),
-                  const Spacer(),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Forgot Password?",
-                      style: TextStyle(
-                        color: Color(0xFF002B9A),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: login,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFFB800),
-                    foregroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    "SIGN IN",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 18),
-              SizedBox(
-                width: double.infinity,
-                height: 48,
-                child: OutlinedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const StudentEnrollmentPage(),
-                      ),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.app_registration,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "MATRIX CODE LAB",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
                     color: Color(0xFF002B9A),
                   ),
-                  label: const Text(
-                    "NEW STUDENT? ENROLL HERE",
-                    style: TextStyle(
-                      color: Color(0xFF002B9A),
-                      fontWeight: FontWeight.bold,
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  "Student Portal",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 30),
+
+                TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: "Email / Username",
+                    prefixIcon: const Icon(Icons.person_outline),
+                    border: const OutlineInputBorder(),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF002B9A),
+                        width: 2,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+
+                const SizedBox(height: 18),
+
+                TextField(
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    prefixIcon: const Icon(Icons.lock_outline),
+                    border: const OutlineInputBorder(),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF002B9A),
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+
+                Row(
+                  children: [
+                    Checkbox(
+                      value: rememberMe,
+                      onChanged: (value) {
+                        setState(() {
+                          rememberMe = value ?? false;
+                        });
+                      },
+                    ),
+                    const Text("Remember Me"),
+                    const Spacer(),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                          color: Color(0xFF002B9A),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 15),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: login,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFFFB800),
+                      foregroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      "SIGN IN",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 18),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const StudentEnrollmentPage(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.app_registration,
+                      color: Color(0xFF002B9A),
+                    ),
+                    label: const Text(
+                      "NEW STUDENT? ENROLL HERE",
+                      style: TextStyle(
+                        color: Color(0xFF002B9A),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+
+                // =====================================================
+                // ENROLLMENT QR CODE
+                // =====================================================
+
+                const SizedBox(height: 22),
+
+                const Text(
+                  "Scan to Enroll",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF002B9A),
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+
+                Image.asset(
+                  'lib/assets/QRCODE_MATRIX_ENROLL.png',
+                  width: 150,
+                  height: 150,
+                ),
+
+                const SizedBox(height: 8),
+
+                const Text(
+                  "Scan this QR code to open the enrollment form",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -1368,3 +1415,4 @@ class CertificatesPage extends StatelessWidget {
     );
   }
 }
+
