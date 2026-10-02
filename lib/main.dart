@@ -11,7 +11,9 @@ class MatrixApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: Uri.base.fragment == '/enroll'
+          ? const StudentEnrollmentPage()
+          : const LoginPage(),
     );
   }
 }
@@ -93,7 +95,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 30),
-
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -108,9 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 18),
-
               TextField(
                 controller: passwordController,
                 obscureText: true,
@@ -126,9 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 10),
-
               Row(
                 children: [
                   Checkbox(
@@ -152,9 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-
               const SizedBox(height: 15),
-
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -176,9 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 18),
-
               SizedBox(
                 width: double.infinity,
                 height: 48,
@@ -225,7 +218,8 @@ class StudentEnrollmentPage extends StatefulWidget {
       _StudentEnrollmentPageState();
 }
 
-class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
+class _StudentEnrollmentPageState
+    extends State<StudentEnrollmentPage> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
@@ -316,9 +310,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       color: Color(0xFF002B9A),
                     ),
                   ),
-
                   const SizedBox(height: 15),
-
                   const Center(
                     child: Text(
                       "Enroll at Matrix Code Lab",
@@ -329,9 +321,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 8),
-
                   const Center(
                     child: Text(
                       "Fill in your details to apply for a course.",
@@ -342,9 +332,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-
                   const SizedBox(height: 30),
-
                   const Text(
                     "Personal Details",
                     style: TextStyle(
@@ -352,9 +340,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   const SizedBox(height: 18),
-
                   TextField(
                     controller: nameController,
                     decoration: const InputDecoration(
@@ -363,9 +349,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-
                   const SizedBox(height: 15),
-
                   TextField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -375,9 +359,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-
                   const SizedBox(height: 15),
-
                   TextField(
                     controller: phoneController,
                     keyboardType: TextInputType.phone,
@@ -387,9 +369,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-
                   const SizedBox(height: 28),
-
                   const Text(
                     "Education Details",
                     style: TextStyle(
@@ -397,9 +377,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   const SizedBox(height: 18),
-
                   TextField(
                     controller: collegeController,
                     decoration: const InputDecoration(
@@ -408,9 +386,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-
                   const SizedBox(height: 15),
-
                   TextField(
                     controller: degreeController,
                     decoration: const InputDecoration(
@@ -419,9 +395,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-
                   const SizedBox(height: 15),
-
                   DropdownButtonFormField<String>(
                     initialValue: selectedYear,
                     decoration: const InputDecoration(
@@ -443,9 +417,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       });
                     },
                   ),
-
                   const SizedBox(height: 28),
-
                   const Text(
                     "Course Selection",
                     style: TextStyle(
@@ -453,11 +425,8 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   const SizedBox(height: 18),
-
                   DropdownButtonFormField<String>(
-                    // FIXED: this must be selectedCourse
                     initialValue: selectedCourse,
                     decoration: const InputDecoration(
                       labelText: "Select Course *",
@@ -481,9 +450,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       });
                     },
                   ),
-
                   const SizedBox(height: 30),
-
                   SizedBox(
                     width: double.infinity,
                     height: 52,
@@ -506,9 +473,7 @@ class _StudentEnrollmentPageState extends State<StudentEnrollmentPage> {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 15),
-
                   const Center(
                     child: Text(
                       "* Required fields",
@@ -573,7 +538,6 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-
             Row(
               children: [
                 dashboardCard(
@@ -595,9 +559,7 @@ class DashboardPage extends StatelessWidget {
                 ),
               ],
             ),
-
             const SizedBox(height: 35),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -627,12 +589,9 @@ class DashboardPage extends StatelessWidget {
                 ),
               ],
             ),
-
             const SizedBox(height: 15),
             coursePreview(),
-
             const SizedBox(height: 30),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -662,12 +621,9 @@ class DashboardPage extends StatelessWidget {
                 ),
               ],
             ),
-
             const SizedBox(height: 15),
             enrollmentPreview(),
-
             const SizedBox(height: 30),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -697,12 +653,9 @@ class DashboardPage extends StatelessWidget {
                 ),
               ],
             ),
-
             const SizedBox(height: 15),
             certificatePreview(),
-
             const SizedBox(height: 30),
-
             const Text(
               "Upcoming Class",
               style: TextStyle(
@@ -710,7 +663,6 @@ class DashboardPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 15),
             upcomingClass(),
           ],
